@@ -39,6 +39,7 @@ class ChatViewController: UIViewController {
         let button = UIButton(type: .system)
         
         button.setImage(UIImage(systemName: Constants.enterButtonImageName), for: .normal)
+        button.tintColor = UIColor(named: Constants.BrandColors.lightPurple)
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -90,6 +91,7 @@ class ChatViewController: UIViewController {
         if let text = messageTextField.text, !text.isEmpty {
             messages.append(Message(sender: .me, body: text))
             messageTextField.text = ""
+            
             tableView.reloadData()
             
             let indexPath = IndexPath(row: messages.count - 1, section: 0)
@@ -158,11 +160,8 @@ extension ChatViewController: UITableViewDelegate {
         
         let message = messages[indexPath.row]
         cell.configure(with: message)
+        cell.selectionStyle = .none
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
