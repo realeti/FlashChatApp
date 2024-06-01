@@ -39,18 +39,19 @@ class WelcomeViewController: UIViewController {
         
         setViews()
         setupConstraints()
+        animationText()
      }
     
     // MARK: - Set Views
     
     private func setViews() {
         view.backgroundColor = .white
+        navigationController?.navigationBar.tintColor = .systemYellow
         
         view.addSubview(titleLabel)
         view.addSubview(loginButton)
         view.addSubview(registerButton)
         
-        titleLabel.text = Constants.appName
         loginButton.setTitle(Constants.logInName, for: .normal)
         registerButton.setTitle(Constants.registerName, for: .normal)
         
@@ -58,10 +59,27 @@ class WelcomeViewController: UIViewController {
         loginButton.addTarget(self, action: #selector(buttonsTapped), for: .touchUpInside)
     }
     
+    private func animationText() {
+        let titleText = Constants.appName
+        titleLabel.text = ""
+        
+        for letter in titleText.enumerated() {
+            Timer.scheduledTimer(withTimeInterval: 0.1 * Double(letter.offset), repeats: false) { _ in
+                self.titleLabel.text?.append(letter.element)
+            }
+        }
+    }
+    
     // MARK: - Actions
     
     @objc private func buttonsTapped(_ sender: UIButton) {
         let registerVC = RegisterViewController()
+        
+        if sender.currentTitle == Constants.registerName {
+            registerVC.authorizationType = .register
+        } else if sender.currentTitle == Constants.logInName {
+            registerVC.authorizationType = .logIn
+        }
         
         navigationController?.pushViewController(registerVC, animated: true)
     }
@@ -96,16 +114,5 @@ extension WelcomeViewController {
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(loginButton.snp.top).offset(-Constants.Size.buttonOffset)
         }
-    }
-}
-
-extension UIButton {
-    convenience init(titleColor: UIColor?, backgroundColor: UIColor? = .clear) {
-        self.init(type: .system)
-        
-        self.titleLabel?.font = .systemFont(ofSize: Constants.Size.buttonFontSize)
-        self.setTitleColor(titleColor, for: .normal)
-        self.backgroundColor = backgroundColor
-        self.translatesAutoresizingMaskIntoConstraints = false
     }
 }

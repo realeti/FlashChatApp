@@ -16,6 +16,9 @@
 		C64211132C0A48DF00CCEED0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C64211122C0A48DF00CCEED0 /* SnapKit */; };
 		C64211152C0A48DF00CCEED0 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C64211142C0A48DF00CCEED0 /* SnapKit-Dynamic */; };
 		C64211172C0A5BFA00CCEED0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64211162C0A5BFA00CCEED0 /* RegisterViewController.swift */; };
+		C67703872C0B329700569F2C /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67703862C0B329700569F2C /* UIButton+Extensions.swift */; };
+		C67703892C0B335B00569F2C /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67703882C0B335B00569F2C /* UIView+Extensions.swift */; };
+		C677038B2C0B336F00569F2C /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C677038A2C0B336F00569F2C /* UITextField+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		C64211032C0A436E00CCEED0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C642110D2C0A478A00CCEED0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C64211162C0A5BFA00CCEED0 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		C67703862C0B329700569F2C /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
+		C67703882C0B335B00569F2C /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		C677038A2C0B336F00569F2C /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +107,20 @@
 		C642110C2C0A478200CCEED0 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C67703852C0B325A00569F2C /* Extensions */,
 				C642110D2C0A478A00CCEED0 /* Constants.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C67703852C0B325A00569F2C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C67703862C0B329700569F2C /* UIButton+Extensions.swift */,
+				C67703882C0B335B00569F2C /* UIView+Extensions.swift */,
+				C677038A2C0B336F00569F2C /* UITextField+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,8 +201,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C64210FA2C0A436D00CCEED0 /* WelcomeViewController.swift in Sources */,
+				C67703892C0B335B00569F2C /* UIView+Extensions.swift in Sources */,
 				C64211172C0A5BFA00CCEED0 /* RegisterViewController.swift in Sources */,
 				C64210F62C0A436D00CCEED0 /* AppDelegate.swift in Sources */,
+				C67703872C0B329700569F2C /* UIButton+Extensions.swift in Sources */,
+				C677038B2C0B336F00569F2C /* UITextField+Extensions.swift in Sources */,
 				C64210F82C0A436D00CCEED0 /* SceneDelegate.swift in Sources */,
 				C642110E2C0A478A00CCEED0 /* Constants.swift in Sources */,
 			);

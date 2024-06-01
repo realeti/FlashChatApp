@@ -15,7 +15,7 @@ struct Constants {
     static let passwordName = "Password"
     
     static let cellIdentfifier = "MessageCell"
-    static let textFieldImageName = "textField"
+    static let textFieldImageName = "textfield"
     
     struct BrandColors {
         static let purple = "BrandPurple"
@@ -28,6 +28,7 @@ struct Constants {
         static let buttonSize: CGFloat = 48.0
         static let buttonOffset: CGFloat = 8.0
         static let buttonFontSize: CGFloat = 30.0
+        static let textFieldCornerRadius: CGFloat = 30.0
     }
     
     struct FStore {
