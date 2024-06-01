@@ -22,6 +22,7 @@
 		C677038D2C0B4B1100569F2C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C677038C2C0B4B1100569F2C /* ChatViewController.swift */; };
 		C67703902C0B59D400569F2C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C677038F2C0B59D400569F2C /* Message.swift */; };
 		C67703932C0B609E00569F2C /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67703922C0B609E00569F2C /* MessageCell.swift */; };
+		C67703962C0B7AB500569F2C /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C67703952C0B7AB500569F2C /* IQKeyboardManagerSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 			files = (
 				C64211132C0A48DF00CCEED0 /* SnapKit in Frameworks */,
 				C64211152C0A48DF00CCEED0 /* SnapKit-Dynamic in Frameworks */,
+				C67703962C0B7AB500569F2C /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +169,7 @@
 			packageProductDependencies = (
 				C64211122C0A48DF00CCEED0 /* SnapKit */,
 				C64211142C0A48DF00CCEED0 /* SnapKit-Dynamic */,
+				C67703952C0B7AB500569F2C /* IQKeyboardManagerSwift */,
 			);
 			productName = FlashChatApp;
 			productReference = C64210F22C0A436D00CCEED0 /* FlashChatApp.app */;
@@ -198,6 +201,7 @@
 			mainGroup = C64210E92C0A436D00CCEED0;
 			packageReferences = (
 				C64211112C0A48DF00CCEED0 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				C67703942C0B7AB500569F2C /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = C64210F32C0A436D00CCEED0 /* Products */;
 			projectDirPath = "";
@@ -458,6 +462,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		C67703942C0B7AB500569F2C /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -470,6 +482,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C64211112C0A48DF00CCEED0 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = "SnapKit-Dynamic";
+		};
+		C67703952C0B7AB500569F2C /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C67703942C0B7AB500569F2C /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
