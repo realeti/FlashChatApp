@@ -19,6 +19,9 @@
 		C67703872C0B329700569F2C /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67703862C0B329700569F2C /* UIButton+Extensions.swift */; };
 		C67703892C0B335B00569F2C /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67703882C0B335B00569F2C /* UIView+Extensions.swift */; };
 		C677038B2C0B336F00569F2C /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C677038A2C0B336F00569F2C /* UITextField+Extensions.swift */; };
+		C677038D2C0B4B1100569F2C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C677038C2C0B4B1100569F2C /* ChatViewController.swift */; };
+		C67703902C0B59D400569F2C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C677038F2C0B59D400569F2C /* Message.swift */; };
+		C67703932C0B609E00569F2C /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67703922C0B609E00569F2C /* MessageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		C67703862C0B329700569F2C /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		C67703882C0B335B00569F2C /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		C677038A2C0B336F00569F2C /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
+		C677038C2C0B4B1100569F2C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		C677038F2C0B59D400569F2C /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		C67703922C0B609E00569F2C /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +76,8 @@
 			children = (
 				C64211092C0A43CB00CCEED0 /* Support */,
 				C642110B2C0A43DB00CCEED0 /* Resources */,
+				C677038E2C0B59A700569F2C /* Model */,
+				C67703912C0B606200569F2C /* Views */,
 				C642110A2C0A43D200CCEED0 /* Screens */,
 				C642110C2C0A478200CCEED0 /* Helpers */,
 				C64211032C0A436E00CCEED0 /* Info.plist */,
@@ -92,6 +100,7 @@
 				C64211002C0A436E00CCEED0 /* LaunchScreen.storyboard */,
 				C64210F92C0A436D00CCEED0 /* WelcomeViewController.swift */,
 				C64211162C0A5BFA00CCEED0 /* RegisterViewController.swift */,
+				C677038C2C0B4B1100569F2C /* ChatViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -121,6 +130,22 @@
 				C677038A2C0B336F00569F2C /* UITextField+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C677038E2C0B59A700569F2C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C677038F2C0B59D400569F2C /* Message.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C67703912C0B606200569F2C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C67703922C0B609E00569F2C /* MessageCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C67703932C0B609E00569F2C /* MessageCell.swift in Sources */,
 				C64210FA2C0A436D00CCEED0 /* WelcomeViewController.swift in Sources */,
 				C67703892C0B335B00569F2C /* UIView+Extensions.swift in Sources */,
 				C64211172C0A5BFA00CCEED0 /* RegisterViewController.swift in Sources */,
@@ -207,6 +233,8 @@
 				C67703872C0B329700569F2C /* UIButton+Extensions.swift in Sources */,
 				C677038B2C0B336F00569F2C /* UITextField+Extensions.swift in Sources */,
 				C64210F82C0A436D00CCEED0 /* SceneDelegate.swift in Sources */,
+				C67703902C0B59D400569F2C /* Message.swift in Sources */,
+				C677038D2C0B4B1100569F2C /* ChatViewController.swift in Sources */,
 				C642110E2C0A478A00CCEED0 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

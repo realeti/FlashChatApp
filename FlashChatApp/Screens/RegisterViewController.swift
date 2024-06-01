@@ -74,10 +74,19 @@ class RegisterViewController: UIViewController {
         
         emailTextField.makeShadow()
         passwordTextField.makeShadow()
+        passwordTextField.isSecureTextEntry = true
+        
+        registerButton.addTarget(self, action: #selector(buttonsTapped), for: .touchUpInside)
     }
     
     @objc private func buttonsTapped(_ sender: UIButton) {
-        
+        if sender.currentTitle == Constants.logInName {
+            let chatVC = ChatViewController()
+            
+            navigationController?.pushViewController(chatVC, animated: true)
+        } else {
+            print("Register")
+        }
     }
 }
 
