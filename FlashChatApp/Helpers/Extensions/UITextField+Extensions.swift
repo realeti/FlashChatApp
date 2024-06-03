@@ -8,7 +8,7 @@
 import UIKit
 
 extension UITextField {
-    convenience init(placeholder: String, color: UIColor?) {
+    convenience init(placeholder: String, color: UIColor?, contentType: UITextContentType?, keyboardType: UIKeyboardType = .default) {
         self.init()
         
         self.placeholder = placeholder
@@ -18,5 +18,7 @@ extension UITextField {
         self.font = .systemFont(ofSize: 25.0)
         self.textColor = color
         self.tintColor = color
+        self.textContentType = contentType
+        self.keyboardType = keyboardType
     }
 }

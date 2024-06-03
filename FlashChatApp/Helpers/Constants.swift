@@ -22,6 +22,9 @@ struct Constants {
     
     static let cellIdentfifier = "MessageCell"
     
+    static let alertError = "Error"
+    static let alertOk = "OK"
+    
     struct BrandColors {
         static let purple = "BrandPurple"
         static let lightPurple = "BrandLightPurple"

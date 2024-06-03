@@ -14,7 +14,6 @@
 		C64211022C0A436E00CCEED0 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C64211012C0A436E00CCEED0 /* Base */; };
 		C642110E2C0A478A00CCEED0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C642110D2C0A478A00CCEED0 /* Constants.swift */; };
 		C64211132C0A48DF00CCEED0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C64211122C0A48DF00CCEED0 /* SnapKit */; };
-		C64211152C0A48DF00CCEED0 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C64211142C0A48DF00CCEED0 /* SnapKit-Dynamic */; };
 		C64211172C0A5BFA00CCEED0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64211162C0A5BFA00CCEED0 /* RegisterViewController.swift */; };
 		C67703872C0B329700569F2C /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67703862C0B329700569F2C /* UIButton+Extensions.swift */; };
 		C67703892C0B335B00569F2C /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67703882C0B335B00569F2C /* UIView+Extensions.swift */; };
@@ -53,7 +52,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C64211132C0A48DF00CCEED0 /* SnapKit in Frameworks */,
-				C64211152C0A48DF00CCEED0 /* SnapKit-Dynamic in Frameworks */,
 				C67703962C0B7AB500569F2C /* IQKeyboardManagerSwift in Frameworks */,
 				C6CF48042C0BC8CE001CF3DF /* FirebaseFirestore in Frameworks */,
 				C6CF48022C0BC8CE001CF3DF /* FirebaseAuth in Frameworks */,
@@ -175,7 +173,6 @@
 			name = FlashChatApp;
 			packageProductDependencies = (
 				C64211122C0A48DF00CCEED0 /* SnapKit */,
-				C64211142C0A48DF00CCEED0 /* SnapKit-Dynamic */,
 				C67703952C0B7AB500569F2C /* IQKeyboardManagerSwift */,
 				C6CF48012C0BC8CE001CF3DF /* FirebaseAuth */,
 				C6CF48032C0BC8CE001CF3DF /* FirebaseFirestore */,
@@ -496,11 +493,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C64211112C0A48DF00CCEED0 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		C64211142C0A48DF00CCEED0 /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C64211112C0A48DF00CCEED0 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
 		};
 		C67703952C0B7AB500569F2C /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;

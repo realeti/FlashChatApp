@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ChatViewController: UIViewController {
     
@@ -45,6 +46,8 @@ class ChatViewController: UIViewController {
         return button
     }()
     
+    private lazy var logOutButton = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logOutPressed))
+    
     // MARK: - Private Properties
     
     private var messages = Message.getMessages()
@@ -63,9 +66,12 @@ class ChatViewController: UIViewController {
     
     private func setViews() {
         title = Constants.appName
-        navigationController?.navigationBar.barTintColor = UIColor(named: Constants.BrandColors.blue)
-        
         view.backgroundColor = UIColor(named: Constants.BrandColors.purple)
+        
+        navigationController?.navigationBar.barTintColor = UIColor(named: Constants.BrandColors.blue)
+        navigationItem.hidesBackButton = true
+        navigationItem.rightBarButtonItem = logOutButton
+        logOutButton.tintColor = .systemRed
         
         tableView.register(MessageCell.self, forCellReuseIdentifier: Constants.cellIdentfifier)
         tableView.separatorStyle = .none
@@ -97,6 +103,22 @@ class ChatViewController: UIViewController {
             let indexPath = IndexPath(row: messages.count - 1, section: 0)
             tableView.scrollToRow(at: indexPath, at: .top, animated: true)
         }
+    }
+    
+    @objc private func logOutPressed(_ sender: UIButton) {
+        do {
+            try Auth.auth().signOut()
+            navigationController?.popToRootViewController(animated: true)
+        } catch let signOutError as NSError {
+            showAlert(message: signOutError.localizedDescription)
+        }
+    }
+    
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: Constants.alertError, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Constants.alertOk, style: .default))
+        
+        present(alert, animated: true)
     }
 }
 

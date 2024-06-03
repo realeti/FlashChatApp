@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import FirebaseAuth
 
 enum AuthorizationType: String {
     case register = "Register"
@@ -29,12 +30,15 @@ class RegisterViewController: UIViewController {
     
     private let emailTextField = UITextField(
         placeholder: Constants.emailName,
-        color: UIColor(named: Constants.BrandColors.blue)
+        color: UIColor(named: Constants.BrandColors.blue),
+        contentType: .emailAddress,
+        keyboardType: .emailAddress
     )
     
     private let passwordTextField = UITextField(
         placeholder: Constants.passwordName,
-        color: .black
+        color: .black,
+        contentType: .password
     )
     
     private let registerButton = UIButton(titleColor: UIColor(named: Constants.BrandColors.blue))
@@ -63,6 +67,10 @@ class RegisterViewController: UIViewController {
             view.backgroundColor = UIColor(named: Constants.BrandColors.blue)
             registerButton.setTitle(Constants.logInName, for: .normal)
             registerButton.setTitleColor(.white, for: .normal)
+            
+            // for testing
+            emailTextField.text = "501@bs.com"
+            passwordTextField.text = "123456"
         default:
             break
         }
@@ -80,13 +88,40 @@ class RegisterViewController: UIViewController {
     }
     
     @objc private func buttonsTapped(_ sender: UIButton) {
-        if sender.currentTitle == Constants.logInName {
-            let chatVC = ChatViewController()
-            
-            navigationController?.pushViewController(chatVC, animated: true)
-        } else {
-            print("Register")
+        guard let email = emailTextField.text,
+              let password = passwordTextField.text else {
+            return
         }
+        
+        if sender.currentTitle == Constants.logInName {
+            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+                if let error {
+                    self.showAlert(message: error.localizedDescription)
+                } else {
+                    self.goToChatVC()
+                }
+            }
+        } else {
+            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                if let error {
+                    self.showAlert(message: error.localizedDescription)
+                } else {
+                    self.goToChatVC()
+                }
+            }
+        }
+    }
+    
+    private func goToChatVC() {
+        let chatVC = ChatViewController()
+        navigationController?.pushViewController(chatVC, animated: true)
+    }
+    
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: Constants.alertError, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Constants.alertOk, style: .default))
+        
+        present(alert, animated: true)
     }
 }
 
