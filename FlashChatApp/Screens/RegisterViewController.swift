@@ -7,7 +7,7 @@
 
 import UIKit
 import SnapKit
-import FirebaseAuth
+import Firebase
 
 enum AuthorizationType: String {
     case register = "Register"
@@ -97,17 +97,19 @@ class RegisterViewController: UIViewController {
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
                 if let error {
                     self.showAlert(message: error.localizedDescription)
-                } else {
-                    self.goToChatVC()
+                    return
                 }
+                
+                self.goToChatVC()
             }
         } else {
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 if let error {
                     self.showAlert(message: error.localizedDescription)
-                } else {
-                    self.goToChatVC()
+                    return
                 }
+                
+                self.goToChatVC()
             }
         }
     }

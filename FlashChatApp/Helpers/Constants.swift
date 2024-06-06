@@ -13,6 +13,7 @@ struct Constants {
     static let registerName = "Register"
     static let emailName = "Email"
     static let passwordName = "Password"
+    static let logout = "Logout"
     
     static let enterButtonImageName = "paperplane.fill"
     static let enterMessagePlaceholder = "Write a message..."

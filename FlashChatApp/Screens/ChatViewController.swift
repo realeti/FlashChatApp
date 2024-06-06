@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import FirebaseAuth
+import Firebase
 
 class ChatViewController: UIViewController {
     
@@ -46,11 +46,12 @@ class ChatViewController: UIViewController {
         return button
     }()
     
-    private lazy var logOutButton = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logOutPressed))
+    private lazy var logOutButton = UIBarButtonItem(title: Constants.logout, style: .plain, target: self, action: #selector(logOutPressed))
     
     // MARK: - Private Properties
     
-    private var messages = Message.getMessages()
+    private var messages: [Message] = []
+    private let db =  Firestore.firestore()
     
     // MARK: - Life Cycle
 
@@ -60,6 +61,8 @@ class ChatViewController: UIViewController {
         setDelegates()
         setViews()
         setupConstraints()
+        
+        loadMessages()
     }
     
     // MARK: - Set Views
@@ -86,22 +89,74 @@ class ChatViewController: UIViewController {
         enterButton.addTarget(self, action: #selector(tapEnterButton), for: .touchUpInside)
     }
     
+    // MARK: - Set delegates
+    
     private func setDelegates() {
         tableView.dataSource = self
         tableView.delegate = self
     }
     
+    // MARK: - Load messages
+    
+    private func loadMessages() {
+        db.collection(Constants.FStore.collectionName)
+            .order(by: Constants.FStore.dataField)
+            .addSnapshotListener { (querySnapshot, error) in
+                
+            if let error {
+                print("There was an issue retrieving data from Firestore. \(error.localizedDescription)")
+            } else {
+                guard let snapshotDocuments = querySnapshot?.documents else {
+                    return
+                }
+                
+                self.messages = []
+                
+                snapshotDocuments.forEach { document in
+                    let data = document.data()
+                    
+                    guard let sender = data[Constants.FStore.senderField] as? String,
+                          let messageBody = data[Constants.FStore.bodyField] as? String else {
+                        return
+                    }
+                    
+                    let newMessage = Message(sender: sender, body: messageBody)
+                    self.messages.append(newMessage)
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                        
+                        let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
+                        self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+                    }
+                }
+            }
+        }
+    }
+    
     // MARK: - Actions
     
     @objc private func tapEnterButton(_ sender: UIButton) {
-        if let text = messageTextField.text, !text.isEmpty {
-            messages.append(Message(sender: .me, body: text))
-            messageTextField.text = ""
-            
-            tableView.reloadData()
-            
-            let indexPath = IndexPath(row: messages.count - 1, section: 0)
-            tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        guard let messageBody = messageTextField.text,
+              let messageSender = Auth.auth().currentUser?.email,
+              !messageBody.isEmpty else {
+            return
+        }
+        
+        db.collection(Constants.FStore.collectionName).addDocument(data: [
+            Constants.FStore.senderField: messageSender,
+            Constants.FStore.bodyField: messageBody,
+            Constants.FStore.dataField: Date().timeIntervalSince1970
+        ]) { error in
+            if let error {
+                print("There was an issue saving data to firestore, \(error.localizedDescription)")
+            } else {
+                print("Successfully saved data.")
+                
+                DispatchQueue.main.async {
+                    self.messageTextField.text = ""
+                }
+            }
         }
     }
     
@@ -181,7 +236,9 @@ extension ChatViewController: UITableViewDelegate {
         }
         
         let message = messages[indexPath.row]
-        cell.configure(with: message)
+        let sender: Sender = message.sender == Auth.auth().currentUser?.email ? .me: .you
+        
+        cell.configure(with: message, sender: sender)
         cell.selectionStyle = .none
         
         return cell

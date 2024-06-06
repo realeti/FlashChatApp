@@ -82,8 +82,8 @@ class MessageCell: UITableViewCell {
     
     // MARK: - Public Properties
     
-    public func configure(with model: Message) {
-        switch model.sender {
+    public func configure(with message: Message, sender: Sender) {
+        switch sender {
         case .me:
             leftImageView.isHidden = true
             rightImageView.isHidden = false
@@ -98,7 +98,7 @@ class MessageCell: UITableViewCell {
             messageLabel.textColor = UIColor(named: Constants.BrandColors.lightPurple)
         }
         
-        messageLabel.text = model.body
+        messageLabel.text = message.body
     }
     
     // MARK: - Set Views
