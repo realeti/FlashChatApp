@@ -70,6 +70,7 @@ class ChatViewController: UIViewController {
     private func setViews() {
         title = Constants.appName
         view.backgroundColor = UIColor(named: Constants.BrandColors.purple)
+        tableView.backgroundColor = .white
         
         navigationController?.navigationBar.barTintColor = UIColor(named: Constants.BrandColors.blue)
         navigationItem.hidesBackButton = true
@@ -109,8 +110,6 @@ class ChatViewController: UIViewController {
                 guard let snapshotDocuments = querySnapshot?.documents else {
                     return
                 }
-                
-                self.messages = []
                 
                 snapshotDocuments.forEach { document in
                     let data = document.data()

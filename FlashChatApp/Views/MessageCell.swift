@@ -74,6 +74,7 @@ class MessageCell: UITableViewCell {
         
         setViews()
         setupConstraints()
+        backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {

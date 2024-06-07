@@ -42,6 +42,16 @@ class WelcomeViewController: UIViewController {
         animationText()
      }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
+    
     // MARK: - Set Views
     
     private func setViews() {
@@ -62,6 +72,13 @@ class WelcomeViewController: UIViewController {
     private func animationText() {
         let titleText = Constants.appName
         titleLabel.text = ""
+        
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 19.0, weight: .black),
+            .foregroundColor: UIColor.white
+        ]
+        
+        navigationController?.navigationBar.titleTextAttributes = attributes
         
         for letter in titleText.enumerated() {
             Timer.scheduledTimer(withTimeInterval: 0.1 * Double(letter.offset), repeats: false) { _ in
